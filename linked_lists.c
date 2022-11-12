@@ -1,7 +1,5 @@
 #include<stdlib.h>
 #include<stdio.h>
-//using github co-pilot as well as my own knowledge to create a linked list.
-
     //creating a struct called node to create linked lists. 
     struct node{
         int data;
@@ -73,11 +71,11 @@
             int value;
             printf("Enter the value of the node %d:", i+1);
             scanf("%d", &value);
-            appendLast(&head, value);
+            appendLast(&head, value); //calling the function to append the value to the last node of the linkedList.
             i++;
             }
 
-        printList(head);
+        printList(*head);
 
         
         return 0;
