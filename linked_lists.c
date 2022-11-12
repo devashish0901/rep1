@@ -1,24 +1,60 @@
 #include<stdlib.h>
 #include<stdio.h>
+//using github co-pilot as well as my own knowledge to create a linked list.
 
     //creating a struct called node to create linked lists. 
     struct node{
-        int input;
-        struct node* next;
+        int data;
+        struct node* linkNext;
     };  
+    typedef struct node Node; //making a node structure better abstraction and less typing.
+
+    void printList(Node* head){
+        Node* temp = head;
+        while(temp != NULL){
+            printf((temp==head)?"%d":"->%d", temp->data);
+            temp = temp->linkNext;
+        }
+        printf("->NULL");
+    }
+
+    void appendLast(Node **headAddress, int input)
+    {
+        Node *newNode = malloc(sizeof(Node));
+        newNode->data = input;
+        newNode->linkNext = NULL;
+        if(*headAddress == NULL)
+        {
+            *headAddress= newNode; //sets the address to the new node, when the headAddress is null.
+        }
+        else
+        {
+            Node *lastNode = *headAddress;
+            while(lastNode -> linkNext != NULL)
+            {
+                lastNode = lastNode -> linkNext;
+            }
+            lastNode -> linkNext = newNode;
+
+        }
+
+
+    }
+
 
     //adding a function to add values to the created linked lists
-    int main(int argc, char** argv)
+    int main()
     {
-        struct node *linked_lists = NULL;
-        int length_List;
+        Node *head= NULL;
+        
+        int lengthList;
         int flag = 0;
+        
 
-        do
-        {
+        do{
             printf("Input the length of the linked list below:");
-            scanf("%d", &length_List);
-            if(length_List<=0){
+            scanf("%d", &lengthList);
+            if(lengthList<=0){
                 printf("Length of the list is invalid and should be positive!"); //invalid for negative input since length should be positive
                 flag=1; //sets flag to 1 to to repeat the loop
             }
@@ -28,9 +64,23 @@
            
 
 
-        } while(flag == 1);
-            {
-               printf("Length of the list is invalid and should be positive!"); 
+        }while(flag == 1);
+        
+        int i = 0;
+    //adding values through linked lists throug user
+        while(i<lengthList)
+        {
+            int value;
+            printf("Enter the value of the node %d:", i+1);
+            scanf("%d", &value);
+            appendLast(&head, value);
+            i++;
             }
 
-    }
+        printList(head);
+
+        
+        return 0;
+
+            
+        }
