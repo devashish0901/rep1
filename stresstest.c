@@ -4,7 +4,7 @@
 
     int main(int argc, char**argv){
         
-        float a, i=0.00000000000000001;
+        float a, i=0.00000000000000001; //took 16 zeros to get the correct answer
         float n= 0.0000000000000001;
         int c = 1;
 
@@ -14,3 +14,4 @@
         }
         return 0;
     }
+    
