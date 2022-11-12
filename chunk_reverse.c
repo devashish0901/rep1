@@ -39,6 +39,7 @@
 
 
     }
+    //refered the code from reversed_linked.c
 
     Node* chunk_reverse(Node **headAddress, int k){
         Node *previousNode = NULL;
@@ -50,20 +51,18 @@
             currentNode->linkNext = previousNode; //sets the pointer and link of the current node to the previous node
             previousNode = currentNode; //sets the previous node to the current node to move forward in the list
             currentNode = nextNode; //sets the current node to the next node to move forward in the list
-            n++;
+            n++; //increments the counter
         } //loop runs till the last node is reached and the currentNode is set to NULL
         Node *TailforChunk = *headAddress; //the current head adress is the tail of the chunk so I store in a new node.
         if(nextNode != NULL){
-            TailforChunk->linkNext = chunk_reverse(&nextNode, k);
+            TailforChunk->linkNext = chunk_reverse(&nextNode, k); //calls the function again to reverse the next chunk of nodes
         }
                 
-        return previousNode; // creates a new node and sets the address of the head node to it.
-        //calls the print function to print the reversed list
-
+        return previousNode; // returns the previous node which is now the last node of the first chunk, which is reversed now
+    
     }
 
 
-    //adding a function to add values to the created linked lists
     int main()
     {
         Node *head= NULL; //creates a node head and sets it to null, this wil be the first node in the list
