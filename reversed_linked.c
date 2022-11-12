@@ -16,6 +16,7 @@
         printf("->NULL"); //ends the list by pointing to the null value.
     }
 
+
     void appendLast(Node **headAddress, int input)
     {
         Node *newNode = malloc(sizeof(Node)); //allocate memory for a new node
@@ -56,8 +57,6 @@
 
     }
 
-
-    //adding a function to add values to the created linked lists
     int main()
     {
         Node *head= NULL; //creates a node head and sets it to null, this wil be the first node in the list
