@@ -16,7 +16,7 @@
         printf("->NULL"); //ends the list by pointing to the null value.
     }
     void printhalfList(Node* head, Node *end){
-        printf("\n The first half of the linked List is: \n");
+        printf("\n\nThe first half of the linked List is: \n");
         Node* temp = head; //creates a temporary node and sets the value of the first node to it.
         while(temp != end){ //loops till node reaches the end of the list. i.e, the value from the har.e-tortiose method, slow pointer or halfway
             printf("%d", temp->data); 
@@ -92,7 +92,7 @@
             appendLast(&head, value); //calling the function to append the value to the last node of the linkedList.
             i++;
             }
-
+        printf("\nThe linked list is: \n");
         printList(head); //prints the linked list. 
         halfList(&head);
         
