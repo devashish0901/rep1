@@ -40,20 +40,27 @@ int partition(int *a, int start, int stop)
     int r = start + rand() % (start - stop);
   
     int temp = a[r];
-    a[r] = a[stop];
-    a[stop] = temp;
-    int pivot = a[stop];
-    int i = start-1;
-    for (int j = start; j < stop; j++) 
+    a[r] = a[start];
+    a[start] = temp;
+    int pivot = a[start];
+    int i = start+1;
+    int j = stop;
+    while(i<=j)
     {
-        if (a[j] <= pivot) 
+        if(a[i] > pivot)
+        {
+         swap(&a[i], &a[j]);
+         j--;
+        }
+        else
         {
             i++;
-            swap(&a[i], &a[j]);
         }
-    }
-    swap(&a[i+1], &a[stop]);
-    return i+1;
+        
+    
+}
+swap(&a[start], &a[j]);
+return j;
 }
    
 void quicksort(int *a, int start, int stop) {
