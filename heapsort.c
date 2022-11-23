@@ -114,7 +114,7 @@ int main(int argc, char** argv)
 
     printf("\nYour array is:\n ");
     print(arrU, size);
-    sort(arrU, size);
+    heapSort(arrU, size);
     printf("\nYour sorted array is:\n ");
     print(arrU, size);
     return 0;
