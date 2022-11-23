@@ -33,34 +33,29 @@ int* UserInput(int n)
 
 }
 
-void sort(int *arrU, int size)
+void sift_down(int* maxHeap, int n, int p)
 {
-    int min_index;
-    int i, j;
+    int rIndex= 2*p+2;
+    int lIndex = 2*p+1;
+    int max = p;
+    if(lIndex<n && maxHeap[lIndex]>maxHeap[max]){max=lIndex;}
+    if(rIndex<n && maxHeap[rIndex]>maxHeap[max]){max=rIndex;}
+    if (max != p) {
+        swap(&maxHeap[p], &maxHeap[max]);
+        sift_down(maxHeap, n, max);
+    }
 
-    for(i = 0 ; i<size-1; i++)
+
+}
+
+void heapSort(int* maxHeap, int n)
+{
+    for(int i=n/2-1; i>=0; i--)
     {
-        min_index= i;
-        for( j = i+1; j<size; j++)
-        {
-            if(arrU[j] < arrU[min_index])
-            {
-                min_index = j;
-            }
-        }
-        swap(&arrU[min_index], &arrU[i]);
-        
+        sift_down(maxHeap, n, i);
     }
 }
 
-void heapSort(int *arrU, int n)
-{
-    int i;
-    for(i=n/2 - 1; i>=0; i--)
-    {
-        heapify(arrU, n, i);
-    }
-}
 
 void print(int *arrU, int size)
 {
