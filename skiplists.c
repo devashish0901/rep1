@@ -3,6 +3,11 @@
 #include <string.h>
 
 //program to implement skip lists in C 
+typedef struct node
+{
+    int val;
+    struct node **forward;
+} node;
 
 //function to create a new node
 struct node *createNode(int val, int level)
